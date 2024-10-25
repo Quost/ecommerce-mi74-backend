@@ -1,0 +1,2 @@
+package weg.arquiteturasoftware.ecommerceproject.Repository;public interface CompradorService {
+}
