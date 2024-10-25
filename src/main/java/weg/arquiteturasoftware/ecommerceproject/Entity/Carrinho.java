@@ -5,16 +5,19 @@ import lombok.Data;
 
 import java.util.List;
 
-
-@Data
-@Table ( name = "Estoque")
 @Entity
-public class Estoque {
+@Table(name = "Carrinho")
+@Data
+public class Carrinho {
     @Id
     @GeneratedValue
     private int id;
     private int quantidade;
+    private double precoTotal;
 
-    @OneToMany(mappedBy = "estoque")
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Produto> produtos;
+
+    @ManyToOne
+    private Comprador comprador;
 }

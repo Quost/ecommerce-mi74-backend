@@ -1,9 +1,6 @@
 package weg.arquiteturasoftware.ecommerceproject.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,4 +18,9 @@ public class Produto {
     private String nome;
     private double custo;
     private String descricao;
+
+    @ManyToOne
+    @JoinColumn(name = "estoque_id")
+    private Estoque estoque;
+
 }

@@ -3,6 +3,7 @@ package weg.arquiteturasoftware.ecommerceproject.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import weg.arquiteturasoftware.ecommerceproject.Entity.Produto;
+import weg.arquiteturasoftware.ecommerceproject.Exception.ProdutoNaoEncontradoException;
 import weg.arquiteturasoftware.ecommerceproject.Repository.ProdutoRepository;
 
 import java.util.List;
@@ -24,7 +25,7 @@ public class ProdutoService {
     public Produto buscarProduto(int id){
         Produto produto = produtoRepository.findById(id).orElse(null);
         if (produto == null){
-            throw new RuntimeException("Produto não encontrado");
+            throw new ProdutoNaoEncontradoException("Produto não encontrado");
         } else {
             return produto;
         }
