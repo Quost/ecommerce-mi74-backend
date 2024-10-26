@@ -1,4 +1,6 @@
 package weg.arquiteturasoftware.ecommerceproject.Exception;
 
-public class ProdutoInvalidoException {
+public class ProdutoInvalidoException extends RuntimeException {
+
+
 }

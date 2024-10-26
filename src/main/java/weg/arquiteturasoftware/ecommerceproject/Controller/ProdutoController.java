@@ -30,7 +30,7 @@ public class ProdutoController {
         return produtoService.buscarTodosProdutos();
     }
 
-    @DeleteMapping("/deletar")
+    @DeleteMapping("/deletar/{id}")
     public void deletarProduto(@PathVariable int id ) {
         this.produtoService.deletarProduto( buscarProduto( id ) );
     }

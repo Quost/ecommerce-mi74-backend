@@ -17,4 +17,6 @@ public class Vendedor {
     private int id;
     private String nome;
     private long cnpj;
+    private int quantidadeVendas;
+    private double totalVendas;
 }

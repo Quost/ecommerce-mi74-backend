@@ -38,7 +38,7 @@ public class CompradorService {
             produtoService.buscarProduto(id);
 
         } catch (ProdutoNaoEncontradoException e ) {
-            throw new ProdutoNaoEncontradoException ("Produto não encontrado");
+            throw new  P ("Produto não encontrado");
         }
 
         vendasService.adicionarProdutoAVendidos(produto);

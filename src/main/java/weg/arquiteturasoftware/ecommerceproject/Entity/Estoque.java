@@ -13,6 +13,7 @@ public class Estoque {
     @Id
     @GeneratedValue
     private int id;
+
     private int quantidade;
 
     @OneToMany(mappedBy = "estoque")

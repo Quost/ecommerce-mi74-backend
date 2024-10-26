@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import weg.arquiteturasoftware.ecommerceproject.Entity.Carrinho;
 import weg.arquiteturasoftware.ecommerceproject.Entity.Produto;
+import weg.arquiteturasoftware.ecommerceproject.Exception.CarrinhoInvalidoException;
 import weg.arquiteturasoftware.ecommerceproject.Repository.CarrinhoRepository;
 import weg.arquiteturasoftware.ecommerceproject.Repository.ProdutoRepository;
 import java.util.List;
@@ -31,14 +32,6 @@ public class CarrinhoService {
 
     public List<Produto> listarProdutosNoCarrinho(int carrinhoId) {
         Optional<Carrinho> carrinhoOpt = carrinhoRepository.findById(carrinhoId);
-        return carrinhoOpt.map(Carrinho::getProdutos).orElseThrow(() -> new RuntimeException("Carrinho não encontrado"));
+        return carrinhoOpt.map(Carrinho::getProdutos).orElseThrow(() -> new CarrinhoInvalidoException("Carrinho não encontrado"));
     }
-
-//    public void finalizarCompra(Carrinho carrinho) {
-//        if (carrinho.getQuantidade() > 0) {
-//            limparCarrinho(carrinho);
-//        } else {
-//            throw new RuntimeException("Carrinho está vazio");
-//        }
-//    }
 }

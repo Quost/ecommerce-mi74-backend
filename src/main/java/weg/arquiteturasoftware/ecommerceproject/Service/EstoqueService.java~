@@ -20,8 +20,6 @@ public class EstoqueService {
         return estoqueRepository.save(estoque);
     }
 
-    public Estoque buscarEstoque(int id){
-        return estoqueRepository.findById(id).orElse(null);
-    }
+    
 
 }
