@@ -34,4 +34,8 @@ public class CarrinhoService {
         Optional<Carrinho> carrinhoOpt = carrinhoRepository.findById(carrinhoId);
         return carrinhoOpt.map(Carrinho::getProdutos).orElseThrow(() -> new CarrinhoInvalidoException("Carrinho não encontrado"));
     }
+
+    public List<Carrinho> listarTodosProdutosNoCarrinho() {
+        return carrinhoRepository.findAll();
+    }
 }

@@ -16,12 +16,25 @@ public class EstoqueService {
     @Autowired
     ProdutoService produtoService;
 
-    public Estoque criarEstoque(Estoque estoque){
+    public Estoque criarEstoque(Estoque estoque) {
         return estoqueRepository.save(estoque);
     }
 
-    public Estoque buscarEstoque(int id){
+    public Estoque buscarEstoque(Integer id) {
         return estoqueRepository.findById(id).orElse(null);
+    }
+
+    public void deletarEstoque(Estoque estoque) {
+        this.estoqueRepository.delete(estoque);
+    }
+
+    public List<Estoque> buscarTodosEstoques() {
+        return estoqueRepository.findAll();
+    }
+
+    public void atualizarEstoque(int id, Estoque novoEstoque){
+        Estoque estoqueAntigo = buscarEstoque(id);
+        estoqueAntigo.setQuantidade(novoEstoque.getQuantidade());
     }
 
 }
