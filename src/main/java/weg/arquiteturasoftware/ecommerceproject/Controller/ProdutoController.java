@@ -4,6 +4,7 @@ import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import weg.arquiteturasoftware.ecommerceproject.Entity.Produto;
+import weg.arquiteturasoftware.ecommerceproject.Service.ProdutoRequest;
 import weg.arquiteturasoftware.ecommerceproject.Service.ProdutoService;
 
 import java.util.List;
@@ -16,8 +17,8 @@ public class ProdutoController {
     ProdutoService produtoService;
 
     @PostMapping("/adicionar")
-    public Produto criarProduto(@RequestBody Produto produto) {
-        return this.produtoService.criarProduto(produto);
+    public Produto criarProduto(@RequestBody ProdutoRequest produtoRequest) {
+        return this.produtoService.criarProduto(produtoRequest.getProduto(), produtoRequest.getEstoqueId());
     }
 
     @GetMapping("/procurar/{id}")

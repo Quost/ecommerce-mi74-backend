@@ -2,9 +2,11 @@ package weg.arquiteturasoftware.ecommerceproject.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import weg.arquiteturasoftware.ecommerceproject.Entity.Estoque;
 import weg.arquiteturasoftware.ecommerceproject.Entity.Produto;
 import weg.arquiteturasoftware.ecommerceproject.Exception.ProdutoInvalidoException;
 import weg.arquiteturasoftware.ecommerceproject.Exception.ProdutoNaoEncontradoException;
+import weg.arquiteturasoftware.ecommerceproject.Repository.EstoqueRepository;
 import weg.arquiteturasoftware.ecommerceproject.Repository.ProdutoRepository;
 
 import java.util.List;
@@ -14,8 +16,12 @@ public class ProdutoService {
 
     @Autowired
     ProdutoRepository produtoRepository;
+    @Autowired
+    EstoqueRepository estoqueRepository;
 
-    public Produto criarProduto(Produto produto) {
+    public Produto criarProduto(Produto produto, Integer estoqueId) {
+        Estoque estoque = estoqueRepository.findById(estoqueId).orElseThrow(() -> new RuntimeException("Estoque não encontrado"));
+        produto.setEstoque(estoque);
         return produtoRepository.save(produto);
     }
 
